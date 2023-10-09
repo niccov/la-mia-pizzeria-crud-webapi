@@ -86,5 +86,28 @@ namespace Pizzeria_Statica.Controllers.API
                 }
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Modify(int id, [FromBody] Pizza updatedPizza)
+        {
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                Pizza? pizzaToUpdate = db.Pizze.Where(Pizza => Pizza.Id == id).FirstOrDefault();
+
+                if(pizzaToUpdate == null)
+                {
+                    return NotFound();
+                }
+
+                pizzaToUpdate.Nome = updatedPizza.Nome;
+                pizzaToUpdate.Descrizione = updatedPizza.Descrizione;
+                pizzaToUpdate.Prezzo = updatedPizza.Prezzo;
+                pizzaToUpdate.Foto = updatedPizza.Foto;
+                pizzaToUpdate.categoriaId = updatedPizza.categoriaId;
+                pizzaToUpdate.Ingredienti = updatedPizza.Ingredienti;
+
+                return Ok();
+            }
+        }
     }
 }
