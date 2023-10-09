@@ -1,0 +1,31 @@
+﻿.container-form{
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px
+}
+
+.inside-container{
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: 800;
+    color: #085569;
+}
+
+.container-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+    background-color: #085569;
+    border-radius: 7px;
+    border-style: none;
+    padding: 5px 35px;
+    color: white;
+}
