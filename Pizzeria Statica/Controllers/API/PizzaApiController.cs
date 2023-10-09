@@ -67,5 +67,24 @@ namespace Pizzeria_Statica.Controllers.API
                 return Ok(pizzaTrovata);
             }
         }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] Pizza newPizza)
+        {
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                try
+                {
+                    db.Pizze.Add(newPizza);
+                    db.SaveChanges();
+
+                    return Ok();
+
+                }catch(Exception ex)
+                {
+                    return BadRequest(new { Message = ex.Message });
+                }
+            }
+        }
     }
 }
