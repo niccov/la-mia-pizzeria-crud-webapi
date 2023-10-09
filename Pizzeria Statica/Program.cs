@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pizzeria_Statica.Database;
+using System.Text.Json.Serialization;
+
 namespace Pizzeria_Statica
 {
     public class Program
@@ -17,6 +19,8 @@ namespace Pizzeria_Statica
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             var app = builder.Build();
 

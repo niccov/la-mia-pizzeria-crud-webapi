@@ -15,5 +15,10 @@ namespace Pizzeria_Statica.Database
         {
             optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=db-pizzeria;Integrated Security=True;TrustServerCertificate=True");
         }
+
+        internal object Include(List<Pizza> pizze)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
