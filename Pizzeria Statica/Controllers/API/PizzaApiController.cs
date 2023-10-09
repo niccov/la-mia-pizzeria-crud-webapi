@@ -106,6 +106,27 @@ namespace Pizzeria_Statica.Controllers.API
                 pizzaToUpdate.categoriaId = updatedPizza.categoriaId;
                 pizzaToUpdate.Ingredienti = updatedPizza.Ingredienti;
 
+                db.SaveChanges();
+
+                return Ok();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                Pizza? pizzaDaCancellare = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+                if(pizzaDaCancellare == null)
+                {
+                    return NotFound();
+                }
+
+                db.Pizze.Remove(pizzaDaCancellare);
+                db.SaveChanges();
+
                 return Ok();
             }
         }
