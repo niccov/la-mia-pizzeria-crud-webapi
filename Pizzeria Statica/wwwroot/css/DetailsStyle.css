@@ -38,6 +38,11 @@ img {
     padding: 4px 10px;
 }
 
+    .button:hover {
+        background-color: #91b4ba;
+        color: white;
+    }
+
 .button-delete {
     background-color: red;
     border-radius: 7px;
@@ -54,6 +59,10 @@ img {
 .link-button {
     color: white;
     text-decoration: none;
+}
+
+.link-button:hover {
+        color: white;
 }
 
 .container-button-home{

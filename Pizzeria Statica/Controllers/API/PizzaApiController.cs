@@ -30,21 +30,27 @@ namespace Pizzeria_Statica.Controllers.API
         [HttpGet]
         public IActionResult GetPizzasByName(string? search)
         {
+
             if (search == null)
             {
-                return BadRequest(new { message = "La ricerca non è valida" });
+                return GetPizzas();
             }
-
-            using (PizzeriaContext db = new PizzeriaContext())
+            else
             {
-                List<Pizza>? pizze = db.Pizze.Include(pizza => pizza.Categoria).Include(pizza => pizza.Ingredienti).Where(pizza => pizza.Nome.ToLower().Contains(search.ToLower())).ToList();
-
-                if (pizze == null)
+                using (PizzeriaContext db = new PizzeriaContext())
                 {
-                    return NotFound(new { message = "Nessuna pizza trovata." });
+                    List<Pizza>? pizze = db.Pizze.Include(pizza => pizza.Categoria).Include(pizza => pizza.Ingredienti).Where(pizza => pizza.Nome.ToLower().Contains(search.ToLower())).ToList();
+
+                    if(pizze == null)
+                    {
+                        return NotFound(new { message = "Non ho trovato pizze con questo nome" });
+                    }
+                    return Ok(pizze);
                 }
-                return Ok(pizze);
             }
+            
+
+            
         }
 
         [HttpGet]

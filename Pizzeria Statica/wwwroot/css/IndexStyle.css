@@ -63,7 +63,16 @@ img{
     padding: 4px 18px;
 }
 
+    .button:hover {
+        background-color: #91b4ba;
+        color: white;
+    }
+
 .link-button {
     color: white;
     text-decoration: none;
+}
+
+.link-button:hover{
+    color: white;
 }
